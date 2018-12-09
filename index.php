@@ -3,6 +3,14 @@ $is_auth = rand(0, 1);
 
 $user_name = 'Иван'; // укажите здесь ваше имя
 $user_avatar = 'img/user.jpg';
+function number_correct($number){
+   $number_ceil = ceil($number);
+    if($number_ceil < 1000){
+        return $number_ceil ." ₽";
+    }
+    $final_price = number_format($number_ceil, 0, ',', ' ');
+    return $final_price." ₽";
+}
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -132,8 +140,8 @@ $user_avatar = 'img/user.jpg';
                     <h3 class="lot__title"><a class="text-link" href="pages/lot.html"><?=$val['name']; ?></a></h3>
                     <div class="lot__state">
                         <div class="lot__rate">
-                            <span class="lot__amount"><?=$val['price']; ?></span>
-                            <span class="lot__cost">цена<b class="rub">р</b></span>
+                            <span class="lot__amount"><?= $val['price']; ?></span>
+                            <span class="lot__cost"><?=number_correct($val['price']);?></span>
                         </div>
                         <div class="lot__timer timer">
                             12:23
